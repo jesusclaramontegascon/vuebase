@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Prueba Vue</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+ 
+ <div id='vueapp'>
+    <div>
+        <p>
+            Nombre: <input v-model="nombre" />
+        </p>
+        <p>
+            Tel&eacute;fono: <input v-model="telefono" />
+        </p>
+        <p>
+            <button v-on:click="enviar">Enviar</button>
+        </p>
+    </div>
+ 
+    <h2>Listado de registros</h2>
+    <div>
+        <div v-for="r in regs">
+            <div>{{ r.nombre }}, {{ r.telefono }}</div>
+        </div>
+    </div>
+</div> 
+
+
+<!-- Importamos Vue.js (Siempre al final) -->
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-resource"></script>
+<!-- Importamos nuestra aplicación -->
+<script src="app.js"></script>
+<!--
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ -->
+
+  
+</body>
+</html>

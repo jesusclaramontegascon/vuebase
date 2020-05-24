@@ -1,0 +1,98 @@
+<html>
+<head>
+  <title>Prueba Vue</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+  <div id="app">
+    <h1>{{titulo}}</h1>
+
+	Introduce tu nueva fruta<input type="text" v-model="nuevafruta"><br/>
+	{{nuevafruta}}<br/><br/>
+	
+	Introduce la cantidad de tu nueva fruta<input type="text" v-model="cantidadfruta"><br/>
+	{{cantidadfruta}}<br/><br/><br/><br/>
+	
+	<button v-on:click="agregarfruta">Agregar Fruta y Cantidad</button><br/><br/><br/>
+	<button v-on:click="eliminar">Eliminar Producto</button>
+	<button v-on:click="rellenardiv">Rellenar Div</button>
+	<button v-on:click="ocultardiv">OcultarDiv</button>
+	
+	  <div id="divrellenado">
+	  </div>
+	
+	Total frutas {{this.frutas.length}}
+
+    <span v-if="this.frutas.length===0"><h1>Sin Stock</h1></span>
+     <span v-else="this.frutas.length>0">
+	 
+	 <h1>Contenido Actual</h1>
+	 
+	 <table border="1">
+      <tr>
+	  <td>Producto</td>
+	  <td>Cantidad</td>
+	  </tr>
+	  
+	  
+      <template v-for="fruta in frutas">
+	   <tr>
+      <td>{{fruta.nombre}}</td>
+	  <td>{{fruta.cantidad}}</td>
+	  </tr>
+      </template>
+	  
+	  
+    </table>
+	</span>
+	
+	
+  </div>
+ 
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+   <script>
+   const componente=new Vue({
+   el: '#app',
+    data: { 
+    titulo: 'Jesús  Ejemplo',
+	nuevafruta:'',
+	cantidadfruta:'',
+    frutas: [
+	         {nombre:'Pera',cantidad:10},
+			 {nombre:'Platano',cantidad:11},
+			 {nombre:'Naranja',cantidad:12},
+	]
+       },
+	methods:{
+	 agregarfruta ()
+	  {console.log("hecho");
+	   
+	   //this.frutas.push({nombre:nuevafruta,cantidad:cantidadfruta})
+	   this.frutas.push({
+	   nombre:this.nuevafruta,cantidad:this.cantidadfruta})
+	   console.log(this.frutas.length);
+	  },
+	  eliminar()
+	  {console.log("eliminar array");
+	  this.frutas.pop();
+	  },
+	  
+	  rellenardiv()
+	  {console.log("Div rellenado");
+	   //divrellenado.innerhtml="Hola buenas";
+	   document.getElementById("divrellenado").innerHTML="Hola buenas";
+	  },
+	  
+	  ocultardiv()
+	  {console.log("Div rellenado");
+	   document.getElementById("divrellenado").innerHTML="";
+	  },
+	}
+   })
+   </script>
+
+  
+</body>
+</html>

@@ -1,0 +1,100 @@
+<html>
+<head>
+  <title>Prueba Vue</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+  <div id="app">
+		{{saludo}}
+	<button v-on:click="saludo='ciclo de vida de vue'">Reinciar Saludo</button><br/>
+
+	
+	<div id="componente">
+	</div>
+	<!--componente -->
+  </div>
+  
+  
+ 
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+   <script>
+   const componente=new Vue({
+   el: '#app',
+     data: 
+	 { saludo:'ciclo de vida de vue'
+	 },
+	 /*antes de crear nada*/
+	 beforeCreate()
+	 { console.log("BeforeCreate");
+	 },
+	 created()
+	 {//al crear los métodos antes del dom
+	 console.log("Created");
+	 },
+	 beforeMount()
+	 {//se ejecuta antes de insertar el dom
+	 console.log("beforeMount");
+	 },
+	 beforeUpdate()
+	 {//se ejecuta al detectar una cambio
+	 console.log("beforeUpdate");
+	 },
+	 
+	 updated()
+	 {//al realizar cambios
+	 console.log("beforeUpdate");
+	 },
+	 
+	 beforeDestroy()
+	 {//al realizar cambios
+	 console.log("beforeDestroy");
+	 },
+	 
+	 destroyed()
+	 {//se destruye la instancias
+	 console.log("destroyed");
+	 },
+	 
+	 mounted()
+	 {
+	 console.log("mounted");
+	
+	 
+	 },
+	 
+	 methods:{
+	  funcion1 ()
+	  {console.log("funcion 1");
+	   
+	  },
+	  
+	   funcion2 ()
+	  {console.log("funcion2");
+	   
+	  },
+	  destruirinstancia()
+	  {console.log("destruirinstancia");
+	   this.$destroy();
+	  },
+	  
+	 }
+	 
+	 
+   })
+   </script>
+   
+   <!--
+   <script>
+    const componente=new Vue({
+      el: '#app',
+      data:{ 
+        saludo:'ciclo de vida de vue'
+      }
+    })-->
+  </script>
+
+  
+</body>
+</html>

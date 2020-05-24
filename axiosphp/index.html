@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Título</title>
+	<script src="https://cdn.rawgit.com/axios/axios/master/dist/axios.min.js"></script>
+	<script>
+		/*
+			Configurar una constante global
+			para definir, por ejemplo, una URL base.
+			Si esta URL cambia, sólo la cambiamos una vez
+		*/
+		const HTTP = axios.create({
+			baseURL: "./servidor.php/"
+		})
+		HTTP
+		.get("/usuarios") // Es como concatenar './servidor.php/' y 'usuarios'
+		.then(respuesta => {
+			console.log("Petición GET de usuarios terminada. Respuesta: ", respuesta.data);
+		});
+		let usuario = {
+			nombre: "Luis",
+			correo: "luis@gmail.com",
+			edad: 10,
+			cliente: false,
+			amigos: [
+				{
+					nombre: "John Doe",
+					correo: "john.doe@gmail.com",
+					edad: 5
+				}
+			]
+		};
+		HTTP
+		.post("/usuario", usuario)
+		.then(respuesta => {
+			console.log("Petición POST de usuario terminada. Respuesta: ", respuesta.data);
+		});
+	</script>
+</head>
+<body>
+	<h1>Peticiones con Axios</h1>
+</body>
+</html>
